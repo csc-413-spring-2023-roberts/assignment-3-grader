@@ -8,6 +8,6 @@ copy-tests:
 	cp -R ../a3/tests .
 	cp -R ../a3/lib .
 
-if-statement-test:
+if-statement-test: clean copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/IfStatementTests.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
