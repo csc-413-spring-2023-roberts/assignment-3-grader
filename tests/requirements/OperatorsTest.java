@@ -75,11 +75,10 @@ public class OperatorsTest {
   private static ILexer lexerForRelop(String relop) throws Exception {
     return Helpers.lexerFromPseudoProgram(
         String.format(
-          String.join(System.lineSeparator(), List.of(
-                    "program {",
-                    "    return<int> %s <int>",
-                    "}"
-          )) 
+            String.join(System.lineSeparator(), List.of(
+                "program {",
+                "    return<int> %s <int>",
+                "}")),
             relop));
   }
 
