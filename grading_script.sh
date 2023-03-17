@@ -3,9 +3,6 @@
 FILENAME="testing.md"
 
 echo "Cleaning up prior to test execution..."
-rm -rf target
-rm -rf sample_files
-rm -f "$FILENAME"
 
 echo "### NAME FROM README" &>> "$FILENAME"
 name=$(grep "^Author:" README.md | awk '{$1=""; print $0}')
@@ -16,10 +13,6 @@ echo "$name" &>> "$FILENAME"
 echo "" &>> "$FILENAME"
 echo "### DIRECTORY NAME" &>> "$FILENAME"
 pwd &>> "$FILENAME"
-
-echo "" &>> "$FILENAME"
-echo "### Deleting class files" &>> "$FILENAME"
-find . -name "*.class" -type f -delete
 
 echo "" &>> "$FILENAME"
 echo "### GIT COMMITS (2 means no commits from student)" &>> "$FILENAME"
@@ -228,7 +221,13 @@ else
   echo "\`\`\`" &>> "$FILENAME"
   echo "" &>> "$FILENAME"
 
-  dir=${PWD##*/}
-  mv $FILENAME "${reversed}-$dir.md"
+  # dir=${PWD##*/}
+  # mv $FILENAME "${reversed}-$dir.md"
+  branch=grading-${date +%s%3N}
+
+  git checkout -b $branch
+  mv $FILENAME README.md
+  git add README.md
+  git push -u origin $branch
 
 done

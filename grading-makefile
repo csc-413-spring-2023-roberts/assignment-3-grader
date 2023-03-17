@@ -11,3 +11,31 @@ copy-tests:
 if-statement-test: clean copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/IfStatementTests.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
+
+operators-test: clean copy-tests
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/OperatorsTest.java
+	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
+
+output-test: clean copy-tests
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/OutputTest.java
+	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
+
+select-statement-test: clean copy-tests
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/SelectStatementTest.java
+	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
+
+type-test: clean copy-tests
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/TypeTests.java
+	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
+
+unless-statement-test: clean copy-tests
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/UnlessStatement.java
+	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
+
+build-for-grading:
+	rm -rf target
+	javac -d target compiler/Compiler.java
+	cp assignment-3-grader/grading_script.sh ./grade.sh
+
+generate-feedback-document: build-for-grading
+	./grade.sh
