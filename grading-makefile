@@ -29,7 +29,7 @@ type-test: clean copy-tests
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
 unless-statement-test: clean copy-tests
-	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/UnlessStatement.java
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/UnlessStatementTest.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
 build-for-grading:
