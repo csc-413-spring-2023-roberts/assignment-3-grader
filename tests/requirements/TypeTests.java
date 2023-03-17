@@ -45,10 +45,10 @@ public class TypeTests {
 
     private static ILexer lexerForType(String type) throws Exception {
         return Helpers.lexerFromPseudoProgram(
-                String.format(String.join(System.lineSeparator(
+                String.format(String.join(System.lineSeparator(),
                         "program { %s <id>",
                         "    <id> = <%s>",
-                        "}")), type, type));
+                        "}"), type, type));
     }
 
     private static List<AST> expectedAstForType(String type) {
