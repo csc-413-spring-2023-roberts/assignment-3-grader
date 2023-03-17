@@ -1,0 +1,13 @@
+clean: 
+	rm -rf target
+	rm -rf tests
+	rm -rf lib
+	find . -name "*.class" -type f -delete
+
+copy-tests:
+	cp -R ../a3/tests .
+	cp -R ../a3/lib .
+
+if-statement-test:
+	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/IfStatementTests.java
+	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
