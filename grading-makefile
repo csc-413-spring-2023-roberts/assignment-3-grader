@@ -5,8 +5,8 @@ clean:
 	find . -name "*.class" -type f -delete
 
 copy-tests:
-	cp -R ../a3/tests .
-	cp -R ../a3/lib .
+	cp -R assignment-3-grader/tests .
+	cp -R assignment-3-grader/lib .
 
 if-statement-test: clean copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/IfStatementTests.java
