@@ -39,4 +39,4 @@ build-for-grading:
 	ls
 
 generate-feedback-document: build-for-grading
-	./grade.sh
+	grade.sh
