@@ -35,6 +35,3 @@ unless-statement-test: copy-tests
 build-for-grading:
 	rm -rf target
 	javac -d target compiler/Compiler.java
-
-generate-feedback-document: build-for-grading
-	./grading_script.sh
