@@ -33,10 +33,14 @@ unless-statement-test: copy-tests
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
 build-for-grading:
+	ls assignment-3-grader
+	echo "----"
 	rm -rf target
 	javac -d target compiler/Compiler.java
 	cp assignment-3-grader/grading_script.sh .
+	echo "----"
 	ls
+	echo "----"
 
 generate-feedback-document: build-for-grading
 	./grading_script.sh
