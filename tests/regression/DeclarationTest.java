@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import ast.AST;
 import ast.AssignTree;
@@ -26,10 +26,10 @@ public class DeclarationTest {
   private static final String VALID_DECLARATION = String.join(
       System.lineSeparator(),
       List.of(
-          "program { <int> <id> }"));
+          "program { int <id> }"));
 
   @Test
-  private void testVariableDeclaration() throws Exception {
+  public void testVariableDeclaration() throws Exception {
     final Parser parser = new Parser(Helpers.lexerFromPseudoProgram(VALID_DECLARATION));
 
     AST ast = parser.execute();
@@ -49,14 +49,14 @@ public class DeclarationTest {
       System.lineSeparator(),
       List.of(
           "program {",
-          "  int <id> ( int <id>, int <id> ) {",
+          "  int <id> ( int <id> , int <id> ) {",
           "    int <id>",
           "    <id> = <int>",
           "  }",
           "}"));
 
   @Test
-  private void testFunctionDeclaration() throws Exception {
+  public void testFunctionDeclaration() throws Exception {
     final Parser parser = new Parser(Helpers.lexerFromPseudoProgram(VALID_FUNCTION_DECLARATION));
 
     AST ast = parser.execute();
