@@ -4,31 +4,31 @@ clean:
 	rm -rf lib
 	find . -name "*.class" -type f -delete
 
-copy-tests:
+copy-tests: clean
 	cp -R assignment-3-grader/tests .
 	cp -R assignment-3-grader/lib .
 
-if-statement-test: clean copy-tests
+if-statement-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/IfStatementTests.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
-operators-test: clean copy-tests
+operators-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/OperatorsTest.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
-output-test: clean copy-tests
+output-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/OutputTest.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
-select-statement-test: clean copy-tests
+select-statement-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/SelectStatementTest.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
-type-test: clean copy-tests
+type-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/TypeTests.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
-unless-statement-test: clean copy-tests
+unless-statement-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/UnlessStatementTest.java
 	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --scan-classpath=target
 
