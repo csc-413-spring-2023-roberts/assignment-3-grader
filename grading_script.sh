@@ -223,11 +223,11 @@ else
 
   # dir=${PWD##*/}
   # mv $FILENAME "${reversed}-$dir.md"
-  branch=grading-${date +%s%3N}
+  # branch=grading-${date +%s%3N}
 
-  git checkout -b $branch
-  mv $FILENAME README.md
-  git add README.md
-  git push -u origin $branch
+  # git checkout -b $branch
+  # mv $FILENAME README.md
+  # git add README.md
+  # git push -u origin $branch
 
 done
