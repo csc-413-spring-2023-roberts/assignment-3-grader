@@ -35,7 +35,7 @@ unless-statement-test: copy-tests
 build-for-grading:
 	rm -rf target
 	javac -d target compiler/Compiler.java
-	cp assignment-3-grader/grading_script.sh ./grade.sh
+	cp assignment-3-grader/grading_script.sh grade.sh
 	ls
 
 generate-feedback-document: build-for-grading
