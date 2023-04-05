@@ -10,31 +10,31 @@ copy-tests: clean
 
 regression-tests: clean
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/regression/*.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.regression.DeclarationTest --select-class=tests.regression.IfElseStatementTest --select-class=tests.regression.ProgramTest --select-class=tests.regression.ReturnStatementTest --select-class=tests.regression.WhileStatementTest
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 if-statement-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/IfStatementTests.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.requirements.IfStatementTests
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 operators-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/OperatorsTest.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.requirements.OperatorsTest
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 output-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/OutputTest.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.requirements.OutputTest
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 select-statement-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/SelectStatementTest.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.requirements.SelectStatementTest
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 type-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/TypeTests.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.requirements.TypeTests
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 unless-statement-test: copy-tests
 	javac -d target -cp target:lib/junit-platform-console-standalone-1.9.0.jar:. parser/Parser.java tests/requirements/UnlessStatementTest.java
-	java -cp target -jar lib/junit-platform-console-standalone-1.9.0.jar --select-class=tests.requirements.UnlessStatementTest
+	java -jar lib/junit-platform-console-standalone-1.9.0.jar -cp target --scan-classpath
 
 build-for-grading:
 	rm -rf target
