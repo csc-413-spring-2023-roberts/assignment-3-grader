@@ -77,7 +77,7 @@ public class OperatorsTest {
         String.format(
             String.join(System.lineSeparator(), List.of(
                 "program {",
-                "    return<int> %s <int>",
+                "    return <int> %s <int>",
                 "}")),
             relop));
   }
