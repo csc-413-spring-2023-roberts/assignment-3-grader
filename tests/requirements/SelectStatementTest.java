@@ -44,17 +44,38 @@ public class SelectStatementTest {
     }
   }
 
-  private static final String SINGLE_SELECTOR_PROGRAM = String.join(
+  private static final String INVALID_SELECTOR_PROGRAM = String.join(
       System.lineSeparator(),
       List.of(
           "program {",
-          "  select {",
-          "    [ <int> ] { <id> = <int> }",
+          "  select <id> {",
           "  }",
           "}"));
 
   @Test
-  private void testValidSelectStatementWithSingleSelector() throws Exception {
+  public void testInvalidSelectorStatement() throws Exception {
+    final Parser parser = new Parser(
+        Helpers.lexerFromPseudoProgram(INVALID_SELECTOR_PROGRAM));
+
+    try {
+      parser.execute();
+      assertEquals(true, false, "The parser did not throw a Syntax Error for a select statement with no selectors");
+    } catch (SyntaxError e) {
+      assertEquals(true, true);
+    }
+  }
+
+  private static final String SINGLE_SELECTOR_PROGRAM = String.join(
+      System.lineSeparator(),
+      List.of(
+          "program {",
+          "  select <id> {",
+          "    [ <int> ] -> { <id> = <int> }",
+          "  }",
+          "}"));
+
+  @Test
+  public void testValidSelectStatementWithSingleSelector() throws Exception {
     final Parser parser = new Parser(Helpers.lexerFromPseudoProgram(SINGLE_SELECTOR_PROGRAM));
     AST ast = parser.execute();
 
@@ -62,6 +83,7 @@ public class SelectStatementTest {
         new ProgramTree(),
         new BlockTree(),
         new SelectTree(),
+        new IdTree(Helpers.getTestToken("<id>")),
         new SelectBlockTree(),
         new SelectorTree(),
         new IntTree(Helpers.getTestToken("<int>")),
@@ -74,19 +96,19 @@ public class SelectStatementTest {
     assertEquals(null, result, "An exception was thrown when parsing a select statement with a single selector");
   }
 
-  private static final String MULTIPLE_SELECTOR_PROGRAM = String.join(
+  public static final String MULTIPLE_SELECTOR_PROGRAM = String.join(
       System.lineSeparator(),
       List.of(
           "program {",
-          "  select {",
-          "    [ <int> ] { <id> = <int> }",
-          "    [ <int> ] { <id> = <int> }",
-          "    [ <int> ] { <id> = <int> }",
+          "  select <id> {",
+          "    [ <int> ] -> { <id> = <int> }",
+          "    [ <int> ] -> { <id> = <int> }",
+          "    [ <int> ] -> { <id> = <int> }",
           "  }",
           "}"));
 
   @Test
-  private void testValidSelectStatementWithMultipleSelectors() throws Exception {
+  public void testValidSelectStatementWithMultipleSelectors() throws Exception {
     final Parser parser = new Parser(Helpers.lexerFromPseudoProgram(MULTIPLE_SELECTOR_PROGRAM));
     AST ast = parser.execute();
 
@@ -94,6 +116,7 @@ public class SelectStatementTest {
         new ProgramTree(),
         new BlockTree(),
         new SelectTree(),
+        new IdTree(Helpers.getTestToken("<id>")),
         new SelectBlockTree(),
         new SelectorTree(),
         new IntTree(Helpers.getTestToken("<int>")),
