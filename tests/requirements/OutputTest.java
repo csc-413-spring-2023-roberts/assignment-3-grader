@@ -25,6 +25,7 @@ public class OutputTest {
   @Before
   public void setUp() {
     System.setOut(new PrintStream(outputStreamCaptor));
+    AST.NodeCount = 0;
   }
 
   @After
