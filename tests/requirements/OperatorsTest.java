@@ -49,11 +49,11 @@ public class OperatorsTest {
   private static ILexer lexerForMultOp(String op) throws Exception {
     return Helpers.lexerFromPseudoProgram(
         String.format(
-            String.join(System.lineSeparator(), List.of(
+            String.join(
+                System.lineSeparator(),
                 "program { int <id>",
-                "    <id> = <int> %s <int>",
-                "}")),
-
+                "<id> = <int> %s <int>",
+                "}"),
             op));
   }
 
@@ -75,10 +75,11 @@ public class OperatorsTest {
   private static ILexer lexerForRelop(String relop) throws Exception {
     return Helpers.lexerFromPseudoProgram(
         String.format(
-            String.join(System.lineSeparator(), List.of(
+            String.join(
+                System.lineSeparator(),
                 "program {",
-                "    return <int> %s <int>",
-                "}")),
+                "return <int> %s <int>",
+                "}"),
             relop));
   }
 
